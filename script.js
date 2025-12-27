@@ -1,19 +1,23 @@
 /**
- * DTZ Official HQ - Advanced Core Logic
+ * DTZ Official HQ - Advanced Multi-Admin Relay
  * Developers: Raviya, Shagiya, Ashiya
  */
 
-const ADMIN_NUMBER = "94778430626";
-const WHATSAPP_GROUP = "https://chat.whatsapp.com/YOUR_GROUP_LINK"; // Replace with your link
+const ADMIN_NUMBERS = [
+    "94763036217",
+    "94778430626",
+    "94741856766",
+    "94788262515"
+];
 
-// --- ADVANCED MATRIX BACKGROUND ---
-const canvas = document.getElementById('matrix-canvas');
-const ctx = canvas.getContext('2d');
-
+// Matrix Background Initialization
 function initMatrix() {
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    const chars = "ｦｱｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ23456789$+-*/=%\"#&_";
+    
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*ｦｱｳｴｵｶｷｸｹ";
     const fontSize = 16;
     const columns = canvas.width / fontSize;
     const drops = Array(Math.floor(columns)).fill(1);
@@ -34,64 +38,73 @@ function initMatrix() {
     setInterval(draw, 35);
 }
 
-// --- TERMINAL BOOT SEQUENCE ---
-async function bootSystem() {
-    const welcome = document.getElementById('welcome');
-    const terminal = document.getElementById('terminal');
-    const output = document.getElementById('t-output');
-
-    welcome.classList.add('slide-out');
-    terminal.style.display = 'flex';
-
-    const logs = [
-        "> INITIALIZING DTZ KERNEL...",
-        "> LOADING RAVIYA_CORE.DLL...",
-        "> SHAGIYA_SECURITY_BYPASS: SUCCESS",
-        "> ASHIYA_NETWORK_LINK: ESTABLISHED",
-        "> ENCRYPTING PORTAL INTERFACE...",
-        "> ACCESS GRANTED: WELCOME TO HQ."
+// System Boot Sequence
+async function boot() {
+    document.getElementById('welcome').classList.add('slide-out');
+    const term = document.getElementById('terminal');
+    const out = document.getElementById('t-output');
+    term.style.display = 'flex';
+    
+    const scripts = [
+        "> INITIALIZING DTZ KERNEL v10.0...",
+        "> LOADING SECURITY_PROTOCOLS...",
+        "> SYNCING ADMIN_RELAY_NETWORK...",
+        "> RAVIYA, SHAGIYA, ASHIYA MODULES ONLINE.",
+        "> SECURE CHANNEL ESTABLISHED.",
+        "> REDIRECTING TO RECRUITMENT HQ..."
     ];
 
-    for (const log of logs) {
+    for(let s of scripts) {
         const p = document.createElement('p');
-        p.textContent = log;
-        output.appendChild(p);
-        await new Promise(r => setTimeout(r, 450));
+        p.textContent = s;
+        out.appendChild(p);
+        await new Promise(r => setTimeout(r, 400));
     }
 
     setTimeout(() => {
-        terminal.style.display = 'none';
-        const portal = document.getElementById('portal');
-        portal.classList.add('fade-in');
-        document.body.style.overflowY = "auto";
-    }, 600);
+        term.style.display = 'none';
+        document.getElementById('portal').classList.add('fade-in');
+        document.body.style.overflow = "auto";
+    }, 500);
 }
 
-// --- FORM DATA PROCESSING ---
+// Advanced Data Processing & Auto-Generation
 document.getElementById('dtzForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    // Captured Data
-    const data = {
-        name: document.getElementById('name').value,
-        city: document.getElementById('city').value,
-        age: document.getElementById('age').value,
-        phone: document.getElementById('whatsapp').value,
-        exp: document.getElementById('exp').value
-    };
+    // UI Feedback
+    const term = document.getElementById('terminal');
+    const out = document.getElementById('t-output');
+    term.style.display = 'flex';
+    out.innerHTML = "<p>> ENCRYPTING INTEL PACKET...</p>";
 
-    // Construct Encrypted Message
-    const message = `*🛡️ DTZ RECRUITMENT REPORT 🛡️*%0A%0A` +
-                    `👤 *CODENAME:* ${data.name}%0A` +
-                    `📍 *CITY:* ${data.city}%0A` +
-                    `🎂 *AGE:* ${data.age}%0A` +
-                    `📱 *CONTACT:* ${data.phone}%0A` +
-                    `💻 *EXP:* ${data.exp}%0A%0A` +
-                    `🔗 *GROUP JOINED:* ${WHATSAPP_GROUP}%0A%0A` +
-                    `_Verified by: Raviya, Shagiya, Ashiya_`;
+    const name = document.getElementById('name').value;
+    const city = document.getElementById('city').value;
+    const age = document.getElementById('age').value;
+    const whatsapp = document.getElementById('whatsapp').value;
+    const exp = document.getElementById('exp').value;
 
-    // Final Redirection
-    window.location.href = `https://wa.me/${ADMIN_NUMBER}?text=${message}`;
+    await new Promise(r => setTimeout(r, 1000));
+    out.innerHTML += "<p>> BROADCASTING TO ADMIN NETWORK...</p>";
+
+    // Generated Intel Report
+    const msg = `*🛡️ DTZ RECRUITMENT INTEL 🛡️*%0A` +
+                `--------------------------%0A` +
+                `👤 *CODENAME:* ${name.toUpperCase()}%0A` +
+                `📍 *LOCATION:* ${city}%0A` +
+                `🎂 *AGE:* ${age}%0A` +
+                `📱 *WHATSAPP:* ${whatsapp}%0A` +
+                `💻 *EXPERIENCE:* ${exp}%0A` +
+                `--------------------------%0A` +
+                `⚠️ *ACTION:* User is ready to send 4 Intel Photos/PDF.%0A` +
+                `--------------------------%0A` +
+                `_Verified: Raviya, Shagiya, Ashiya_`;
+
+    // Strategy: Selects the primary admin and prepares the relay.
+    const targetAdmin = ADMIN_NUMBERS[1]; // Sets the target admin from the list.
+    
+    await new Promise(r => setTimeout(r, 800));
+    window.location.href = `https://wa.me/${targetAdmin}?text=${msg}`;
 });
 
 window.onload = initMatrix;
