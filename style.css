@@ -1,0 +1,44 @@
+:root {
+    --primary: #00ffcc;
+    --bg: #050508;
+    --glass: rgba(0, 255, 204, 0.05);
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    font-family: 'Noto Sans Sinhala', sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(10, 12, 18, 0.9);
+    border: 1px solid rgba(0, 255, 204, 0.2);
+    backdrop-filter: blur(15px);
+    border-top: 4px solid var(--primary);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+input, select {
+    background: #000 !important;
+    border: 1px solid #222 !important;
+    border-left: 3px solid var(--primary) !important;
+    color: var(--primary) !important;
+    margin-bottom: 15px;
+}
+
+.btn-send {
+    background: var(--primary);
+    color: #000;
+    font-family: 'Orbitron';
+    letter-spacing: 2px;
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+.btn-send:hover {
+    box-shadow: 0 0 25px var(--primary);
+    transform: translateY(-2px);
+}
